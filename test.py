@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 load_dotenv()
 EMAIL = os.getenv('EMAIL')
@@ -22,5 +23,8 @@ if __name__ == "__main__":
     print(EARLIEST)
     print(LATEST)
     print(PARTY_SIZE)
+
+    EARLIEST = datetime.strptime(EARLIEST, "%H:%M:%S").time()
+    print(EARLIEST)
 
     

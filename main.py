@@ -1,9 +1,12 @@
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
+from datetime import datetime
 import pandas as pd
 import asyncio
 import os
 import time
+
+
 
 # load environment variables from .env file
 load_dotenv()
@@ -20,6 +23,10 @@ PARTY_SIZE = os.getenv('PARTY_SIZE')
 async def run(start_url):
 	"""_summary_
 	"""
+	# convert time strings to datetime time objects
+	EARLIEST = datetime.strptime(EARLIEST, "%H:%M:%S").time()
+	TARGET_TIME = datetime.strptime(TARGET_TIME, "%H:%M:%S").time()
+	LATEST = datetime.strptime(LATEST, "%H:%M:%S").time()
 
 	async with async_playwright() as p:
 		try:
@@ -47,7 +54,14 @@ async def run(start_url):
 			await page.get_by_placeholder("Search restaurants, cuisines, etc.").fill(RESTAURANT_NAME)
 
 			# click on first option
-			await page.get_by_text(RESTAURANT_NAME).nth(2).click()
+			await page.click('li[role="option"]')
+
+			# now check what reservations are available
+			#id="rgs://resy/51293/2591024/2/2024-12-18/2024-12-18/19:00:00/2/Dining Room"
+			#id="rgs://resy/65463/2920970/2/2024-12-18/2024-12-18/19:00:00/2/Table Seating"
+
+			
+
 			
 			time.sleep(5)
 
