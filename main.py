@@ -18,6 +18,7 @@ TARGET_TIME = os.getenv('TARGET_TIME')
 EARLIEST = os.getenv('EARLIEST')
 LATEST = os.getenv('LATEST')
 PARTY_SIZE = os.getenv('PARTY_SIZE')
+TABLE_TYPE = os.getenv('TABLE_TYPE')
 
 
 async def run(start_url):
@@ -60,6 +61,9 @@ async def run(start_url):
 			#id="rgs://resy/51293/2591024/2/2024-12-18/2024-12-18/19:00:00/2/Dining Room"
 			#id="rgs://resy/65463/2920970/2/2024-12-18/2024-12-18/19:00:00/2/Table Seating"
 
+			# while loop checking for res in time window
+			# refresh on each iteration
+			
 			
 
 			
